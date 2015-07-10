@@ -38,6 +38,8 @@ public class VideoStore {
             fos.close();
         } catch (IOException e) {
             System.out.println("Problem with file output");
+            System.out.println("e: " + e);
+            System.out.println("e.getMessage(): " + e.getMessage());
         }
     }
 

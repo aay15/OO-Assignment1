@@ -28,11 +28,11 @@ public class Inventory{
         for(Movie currMovie : movieList) {        
             if(currMovie.getSku() == sku) {
                 skuFound = true;
-                //currMovie.removeMovie();
+                currMovie.removeMovie();
                 
-                //if(currMovie.getQuantity() <= 0) {
+                if(currMovie.getQuantity() <= 0) {
                     movieList.remove(currMovie);
-                //}
+                }
                 System.out.println ("Removed movie with sku: " + sku);
             } 
         }
