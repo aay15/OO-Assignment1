@@ -20,7 +20,7 @@ public class VideoStore {
 
         } catch (FileNotFoundException e) {
             //do nothing if not found...
-            System.out.println("Cannot find datafile.");
+            //System.out.println("Cannot find datafile.");
         } catch (IOException e) {
             System.out.println("Problem with file input.");
         } catch (ClassNotFoundException e) {
@@ -46,11 +46,14 @@ public class VideoStore {
     static void displayMenu() {
         System.out.println();
         System.out.println("Video Store Inventory Menu");
+        System.out.println("--------------------------");
         System.out.println("1. Add Movie");
         System.out.println("2. Remove Movie");
         System.out.println("3. Find Movie by SKU");
         System.out.println("4. Display inventory");
         System.out.println("5. Quit the Program");
+        System.out.println();
+
     }
       
     private void enterChoice() {
@@ -62,27 +65,26 @@ public class VideoStore {
             case 1: //Add movie     
                 storeInventory.addMovie(createNewMovie());
                 enterChoice();
-            break;
+                break;
 
             case 2: //Remove movie
                 storeInventory.removeMovieBySku(requestSku());
                 enterChoice();
-            break;
+                break;
 
             case 3: //Display movie
                 storeInventory.displayMovieBySku(requestSku());
                 enterChoice();
-            break;
+                break;
 
             case 4: //Display inventory
                 storeInventory.displayInventory();
-                displayMenu();
                 enterChoice();
-            break;
+                break;
 
             case 5: //Quit program
-
-            break;
+                System.out.println("Exit selected");
+                break;
 
             default: 
                 System.out.println("Incorrect choice.");
@@ -103,7 +105,8 @@ public class VideoStore {
         System.out.println("Enter the price:");
         price = sc.nextFloat();
         System.out.println("Enter the title:"); 
-        title = sc.next();
+        sc.nextLine();
+        title = sc.nextLine();
 
         Movie movie = new Movie(sku, quantity, price, title);
 
@@ -114,7 +117,5 @@ public class VideoStore {
         System.out.println("Enter the SKU:");    
         return sc.nextInt();
     }
-
-    //private void displayMovie
 
 }
