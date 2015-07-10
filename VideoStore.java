@@ -26,8 +26,7 @@ public class VideoStore {
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found on input from file.");
         } 
-
-        displayMenu();
+        
         store.enterChoice();
 
         //Serialize to output
@@ -53,27 +52,24 @@ public class VideoStore {
         System.out.println("==========================");
     }
       
-    void enterChoice() {
+    private void enterChoice() {
+        displayMenu();
         System.out.println("Enter your choice: ");
         int choice = sc.nextInt();
 
         switch (choice) {
             case 1: //Add movie     
                 storeInventory.addMovie(createNewMovie());
-                displayMenu();
                 enterChoice();
-
             break;
 
             case 2: //Remove movie
                 storeInventory.removeMovieBySku(requestSku());
-                displayMenu();
                 enterChoice();
             break;
 
             case 3: //Display movie
                 storeInventory.displayMovieBySku(requestSku());
-                displayMenu();
                 enterChoice();
             break;
 
@@ -89,7 +85,6 @@ public class VideoStore {
 
             default: 
                 System.out.println("Incorrect choice.");
-                displayMenu();
                 enterChoice();
                 break;
         }
