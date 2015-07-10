@@ -1,18 +1,60 @@
-import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class Inventory{
 
-    Hashtable<String, Movie>movieInventory = new Hashtable<String, Movie>();
+    ArrayList<Movie> movieList = new ArrayList<Movie>();
 
     public void addMovie(Movie movie) {
 
-        String movieTitle = movie.getTitle();
+        boolean matchFound = false;
+        
+        for(Movie currMovie : movieList){
+            if(currMovie.getSku() == movie.getSku()){
+                matchFound = true;
+                currMovie.increaseQuantityBy(movie.getQuantity());
+                break;
+            }
+        }
 
-        if(movieInventory.containsKey(movieTitle)) {
-            Movie oldMovie = movieInventory.get(movieTitle);
+        if(!matchFound) {
+            movieList.add(movie);
+        }
+    }
 
-        } else {
-            movieInventory.put(movieTitle, movie);
+    public void removeMovieBySku(int sku) {
+       
+        boolean skuFound = false;
+
+        for(Movie currMovie : movieList) {        
+            if(currMovie.getSku() == sku) {
+                skuFound = true;
+                currMovie.removeMovie();
+                
+                if(currMovie.getQuantity() <= 0) {
+                    movieList.remove(currMovie);
+                }
+            } 
+        }
+        
+        if(!skuFound) {
+            System.out.println("Movie not found by sku.");
+        } 
+    }
+
+    public void displayMovieBySku(int sku) {
+        
+        boolean skuFound = false;
+
+        for(Movie currMovie : movieList) {
+            if(currMovie.getSku() == sku) {
+                skuFound = true;
+                currMovie.displayMovie(); 
+                break;
+            }
+        }
+
+        if(!skuFound) {
+            System.out.println("Movie not found by sku.");
         }
     }
 }

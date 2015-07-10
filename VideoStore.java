@@ -26,23 +26,23 @@ public class VideoStore {
         int choice = sc.nextInt();
 
         switch (choice) {
-            case 1:      
+            case 1: //Add movie     
                 storeInventory.addMovie(createNewMovie());
             break;
 
-            case 2:
-
+            case 2: //Remove movie
+                storeInventory.removeMovieBySku(requestSku());
             break;
 
-            case 3:
-
+            case 3: //Display movie
+                storeInventory.displayMovieBySku(requestSku());
             break;
 
-            case 4:
-
+            case 4: //Display inventory
+            
             break;
 
-            case 5:
+            case 5: //Quit program
 
             break;
 
@@ -53,18 +53,28 @@ public class VideoStore {
         }
     }
 
-    Movie createNewMovie() { 
-        Movie movie = new Movie();
-        System.out.println("Enter the SKU:");
-        movie.setSku(sc.nextInt()); 
+    private Movie createNewMovie() { 
+        
+        int sku, quantity;
+        float price;
+        String title;
+
+        sku = requestSku();
         System.out.println("Enter the quantity:");
-        movie.setQuantity(sc.nextInt());
+        quantity = sc.nextInt();
         System.out.println("Enter the price:");
-        movie.setPrice(sc.nextFloat());
+        price = sc.nextFloat();
         System.out.println("Enter the title:"); 
-        movie.setTitle(sc.next());
+        title = sc.next();
+
+        Movie movie = new Movie(sku, quantity, price, title);
 
         return movie;
+    }
+
+    private int requestSku() {
+        System.out.println("Enter the SKU:");    
+        return sc.nextInt();
     }
 
 }
