@@ -116,6 +116,4 @@ public class VideoStore {
         return sc.nextInt();
     }
 
-    //private void displayMovie
-
 }
