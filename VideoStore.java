@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class VideoStore {
     
@@ -6,9 +7,38 @@ public class VideoStore {
     
     private Inventory storeInventory = new Inventory();
 
-    public static void main(String[] args) {    
+    public static void main(String[] args) {
+
         VideoStore store = new VideoStore();
+
+        //read in inventory
+        try {
+            FileInputStream fis = new FileInputStream("inventoryFile");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            storeInventory.movieList = (ArrayList<Movie>)ois.readObject(); 
+
+        } catch (FileNotFoundException e) {
+            //do nothing if not found...
+            System.out.println("Cannot find datafile.");
+        } catch (IOException e) {
+            System.out.println("Problem with file input.");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found on input from file.");
+        } 
+        
         store.enterChoice();
+
+        //Serialize to output
+        try {
+            FileOutputStream fos = new FileOutputStream("inventoryFile");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(storeInventory.movieList);
+            fos.close();
+        } catch (IOExceptopm e) {
+            System.out.println("Problem with file output");
+        }
     }
 
     private void displayMenu() {
