@@ -16,7 +16,7 @@ public class VideoStore {
             FileInputStream fis = new FileInputStream("inventoryFile");
             ObjectInputStream ois = new ObjectInputStream(fis);
             
-            storeInventory.movieList = (ArrayList<Movie>)ois.readObject(); 
+            store.storeInventory.movieList = (ArrayList<Movie>)ois.readObject(); 
 
         } catch (FileNotFoundException e) {
             //do nothing if not found...
@@ -34,14 +34,15 @@ public class VideoStore {
             FileOutputStream fos = new FileOutputStream("inventoryFile");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            oos.writeObject(storeInventory.movieList);
+            oos.writeObject(store.storeInventory.movieList);
             fos.close();
-        } catch (IOExceptopm e) {
+        } catch (IOException e) {
             System.out.println("Problem with file output");
         }
     }
 
-    private void displayMenu() {
+    static void displayMenu() {
+        System.out.println();
         System.out.println("Video Store Inventory Menu");
         System.out.println("1. Add Movie");
         System.out.println("2. Remove Movie");
@@ -72,7 +73,8 @@ public class VideoStore {
             break;
 
             case 4: //Display inventory
-                
+                storeInventory.displayInventory();
+                displayMenu();
                 enterChoice();
             break;
 
@@ -110,5 +112,7 @@ public class VideoStore {
         System.out.println("Enter the SKU:");    
         return sc.nextInt();
     }
+
+    //private void displayMovie
 
 }
