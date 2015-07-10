@@ -6,6 +6,13 @@ public class Movie {
     private int quantity;
     private float price;
 
+    public Movie(int sku, int quantity, float price, String title) {
+        this.sku = sku;
+        this.quantity = quantity;
+        this.price = price;
+        this.title = title;
+    }
+
     public int getSku() {
         return sku;
     }
@@ -13,28 +20,23 @@ public class Movie {
     public void setSku(int sku) {
         this.sku = sku;
     }
-    
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public int getQuantity() {
+   public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void displayMovie() {
+        System.out.println("Sku: " + this.sku);
+        System.out.println("Title: " + this.title);
+        System.out.println("Quantity: " + this.quantity);
+        System.out.println("Price: " + this.price);
     }
 
-    public float getPrice() {
-        return price;
+    public void increaseQuantityBy(int n) {
+        quantity += n;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void removeMovie() {
+        quantity--;
     }
-    
 }
