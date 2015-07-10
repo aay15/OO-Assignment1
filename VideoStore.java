@@ -20,7 +20,7 @@ public class VideoStore {
 
         } catch (FileNotFoundException e) {
             //do nothing if not found...
-            System.out.println("Cannot find datafile.");
+            //System.out.println("Cannot find datafile.");
         } catch (IOException e) {
             System.out.println("Problem with file input.");
         } catch (ClassNotFoundException e) {
@@ -43,13 +43,14 @@ public class VideoStore {
     }
 
     static void displayMenu() {
-        System.out.println();
+        System.out.println("==========================");
         System.out.println("Video Store Inventory Menu");
         System.out.println("1. Add Movie");
         System.out.println("2. Remove Movie");
         System.out.println("3. Find Movie by SKU");
         System.out.println("4. Display inventory");
         System.out.println("5. Quit the Program");
+        System.out.println("==========================");
     }
       
     void enterChoice() {
