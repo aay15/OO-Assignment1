@@ -42,14 +42,16 @@ public class VideoStore {
     }
 
     static void displayMenu() {
-        System.out.println("==========================");
+        System.out.println();
         System.out.println("Video Store Inventory Menu");
+        System.out.println("--------------------------");
         System.out.println("1. Add Movie");
         System.out.println("2. Remove Movie");
         System.out.println("3. Find Movie by SKU");
         System.out.println("4. Display inventory");
         System.out.println("5. Quit the Program");
-        System.out.println("==========================");
+        System.out.println();
+
     }
       
     private void enterChoice() {
@@ -75,7 +77,6 @@ public class VideoStore {
 
             case 4: //Display inventory
                 storeInventory.displayInventory();
-                displayMenu();
                 enterChoice();
             break;
 

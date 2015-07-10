@@ -1,5 +1,6 @@
+import java.io.*;
 
-public class Movie {
+public class Movie implements Serializable {
 
     private int sku;
     private String title;

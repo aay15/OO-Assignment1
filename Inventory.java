@@ -1,8 +1,7 @@
-import java.io.*;
 import java.util.ArrayList;
 import java.text.*;
 
-public class Inventory implements Serializable{
+public class Inventory{
 
     ArrayList<Movie> movieList = new ArrayList<Movie>();
 
