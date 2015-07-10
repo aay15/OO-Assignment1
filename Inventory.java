@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.text.*;
 
 public class Inventory{
 
@@ -38,7 +37,7 @@ public class Inventory{
         }
         
         if(!skuFound) {
-            System.out.println("Movie not found by sku.");
+            System.out.println("No movie found with this sku.");
         } 
     }
 
@@ -55,16 +54,20 @@ public class Inventory{
         }
 
         if(!skuFound) {
-            System.out.println("Movie not found by sku.");
+            System.out.println("No movie found with this sku.");
         }
     }
 
     public void displayInventory() {
-        //DecimalFormat priceForm = new DecimalFormat (#00.)
-        //DecimalFormat skuForm =
-        //DecimalFormat 
+        System.out.println();
+        System.out.printf("%-10s", "sku");
+        System.out.printf("%-10s", "quantity");
+        System.out.printf("%-10s", "price");
+        System.out.printf("%-20s", "title");
+        System.out.println();
+        System.out.println("---------------------------------------------");
 
         for (int i = 0; i < movieList.size(); i++)
-            movieList.get(i).displayMovie();
+            movieList.get(i).displayLine();
     }
 }

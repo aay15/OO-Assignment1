@@ -63,26 +63,26 @@ public class VideoStore {
             case 1: //Add movie     
                 storeInventory.addMovie(createNewMovie());
                 enterChoice();
-            break;
+                break;
 
             case 2: //Remove movie
                 storeInventory.removeMovieBySku(requestSku());
                 enterChoice();
-            break;
+                break;
 
             case 3: //Display movie
                 storeInventory.displayMovieBySku(requestSku());
                 enterChoice();
-            break;
+                break;
 
             case 4: //Display inventory
                 storeInventory.displayInventory();
                 enterChoice();
-            break;
+                break;
 
             case 5: //Quit program
-
-            break;
+                System.out.println("Exit selected");
+                break;
 
             default: 
                 System.out.println("Incorrect choice.");
@@ -103,7 +103,8 @@ public class VideoStore {
         System.out.println("Enter the price:");
         price = sc.nextFloat();
         System.out.println("Enter the title:"); 
-        title = sc.next();
+        sc.nextLine();
+        title = sc.nextLine();
 
         Movie movie = new Movie(sku, quantity, price, title);
 

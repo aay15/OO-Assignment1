@@ -1,7 +1,7 @@
 import java.io.*;
+import java.text.*;
 
 public class Movie implements Serializable {
-
     private int sku;
     private String title;
     private int quantity;
@@ -27,10 +27,23 @@ public class Movie implements Serializable {
     }
 
     public void displayMovie() {
+        DecimalFormat priceForm = new DecimalFormat ("$#0.00");
+        System.out.println();
         System.out.println("Sku: " + this.sku);
         System.out.println("Title: " + this.title);
         System.out.println("Quantity: " + this.quantity);
-        System.out.println("Price: " + this.price);
+        System.out.println("Price: " + priceForm.format(this.price));
+    }
+    public void displayLine() {
+        DecimalFormat priceForm = new DecimalFormat ("$#0.00");
+        
+        System.out.printf("%-10s", this.sku);
+        System.out.printf("%-10s", this.quantity);
+        System.out.printf("%-10s", priceForm.format(this.price));
+        System.out.printf("%-20s", this.title);
+        System.out.println();
+       // System.out.println( this.sku + " " + this.quantity + " " + priceForm.format(this.price) +
+       //     " " + this.title);
     }
 
     public void increaseQuantityBy(int n) {
