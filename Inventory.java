@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.text.*;
 
 public class Inventory implements Serializable{
 
@@ -57,5 +58,14 @@ public class Inventory implements Serializable{
         if(!skuFound) {
             System.out.println("Movie not found by sku.");
         }
+    }
+
+    public void displayInventory() {
+        //DecimalFormat priceForm = new DecimalFormat (#00.)
+        //DecimalFormat skuForm =
+        //DecimalFormat 
+
+        for (int i = 0; i < movieList.size(); i++)
+            movieList.get(i).displayMovie();
     }
 }
