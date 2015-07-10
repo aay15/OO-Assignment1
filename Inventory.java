@@ -1,8 +1,6 @@
-import java.io.*;
 import java.util.ArrayList;
-import java.text.*;
 
-public class Inventory implements Serializable{
+public class Inventory{
 
     ArrayList<Movie> movieList = new ArrayList<Movie>();
 
@@ -30,16 +28,17 @@ public class Inventory implements Serializable{
         for(Movie currMovie : movieList) {        
             if(currMovie.getSku() == sku) {
                 skuFound = true;
-                currMovie.removeMovie();
+                //currMovie.removeMovie();
                 
-                if(currMovie.getQuantity() <= 0) {
+                //if(currMovie.getQuantity() <= 0) {
                     movieList.remove(currMovie);
-                }
+                //}
+                System.out.println ("Removed movie with sku: " + sku);
             } 
         }
         
         if(!skuFound) {
-            System.out.println("Movie not found by sku.");
+            System.out.println("No movie found with this sku.");
         } 
     }
 
@@ -56,16 +55,20 @@ public class Inventory implements Serializable{
         }
 
         if(!skuFound) {
-            System.out.println("Movie not found by sku.");
+            System.out.println("No movie found with this sku.");
         }
     }
 
     public void displayInventory() {
-        //DecimalFormat priceForm = new DecimalFormat (#00.)
-        //DecimalFormat skuForm =
-        //DecimalFormat 
+        System.out.println();
+        System.out.printf("%-10s", "sku");
+        System.out.printf("%-8s", "quant");
+        System.out.printf("%-10s", "price");
+        System.out.printf("%-20s", "title");
+        System.out.println();
+        System.out.println("---------------------------------------------");
 
         for (int i = 0; i < movieList.size(); i++)
-            movieList.get(i).displayMovie();
+            movieList.get(i).displayLine();
     }
 }
